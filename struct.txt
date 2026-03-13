@@ -67,4 +67,4 @@ RabbitMQ启动   sudo service rabbitmq-server start
 | Lua防超卖   | ✅完成    |
 | 防重复秒杀    | ✅完成    |
 | RabbitMQ | ✅完成|
-| 压测       | ❌还没做   |
+| 压测       | ✅完成   |
