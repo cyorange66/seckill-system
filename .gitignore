@@ -1,0 +1,8 @@
+venv/
+seckill_env/
+__pycache__/
+*.pyc
+.env
+*.log
+.vscode
+.idea

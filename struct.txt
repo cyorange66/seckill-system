@@ -1,0 +1,70 @@
+seckill_system
+│
+├── app
+│   ├── main.py
+│
+│   ├── api                # 路由
+│   │   ├── user.py
+│   │   ├── product.py
+│   │   ├── order.py
+│   │   └── seckill.py
+│
+│   ├── models             # 数据库模型
+│   │   ├── user.py
+│   │   ├── product.py
+│   │   └── order.py
+│
+│   ├── schemas            # Pydantic
+│   │   ├── user.py
+│   │   ├── product.py
+│   │   └── order.py
+│
+│   ├── services           # 业务逻辑
+│   │   ├── user_service.py
+│   │   ├── product_service.py
+│   │   ├── order_service.py
+│   │   └── seckill_service.py
+│
+│   ├── core               # 核心配置
+│   │   ├── config.py
+│   │   ├── database.py
+│   │   └── redis.py
+│
+│   └── utils
+│       └── snowflake.py
+│
+├── tests
+│
+├── requirements.txt
+└── README.md
+
+激活数据库    mysql -u root -p
+
+激活虚拟环境  source venv/bin/activate
+
+激活服务器    python3 -m uvicorn app.main:app --reload
+             python3 -m uvicorn app.main:app --reload --workers 4
+    压测      python3 -m uvicorn app.main:app --workers 4
+
+进入文件目录  cd /mnt/d/VScode_project/seckill_system
+
+启动consumer python3 consumer.py
+
+MYSQL启动    sudo service mysql start
+MYSQL检查    sudo service mysql status
+
+RabbitMQ启动   sudo service rabbitmq-server start
+        检查   sudo service rabbitmq-server status
+
+
+
+
+| 功能       | 状态     |
+| -------- | ------ |
+| FastAPI  | ✅完成    |
+| MySQL订单  | ✅完成    |
+| Redis库存  | ✅完成    |
+| Lua防超卖   | ✅完成    |
+| 防重复秒杀    | ✅完成    |
+| RabbitMQ | ✅完成|
+| 压测       | ❌还没做   |
