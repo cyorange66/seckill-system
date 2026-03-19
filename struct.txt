@@ -56,6 +56,9 @@ MYSQL检查    sudo service mysql status
 RabbitMQ启动   sudo service rabbitmq-server start
         检查   sudo service rabbitmq-server status
 
+更新git代码    git add .
+              git commit -m "update seckill system"
+              git push
 
 
 

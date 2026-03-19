@@ -1,19 +1,13 @@
 from fastapi import APIRouter, Depends
-from sqlalchemy.orm import Session
-from app.schemas.user import UserCreate
-from app.services.user_service import create_user
-from app.core.database import SessionLocal
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import select
+from app.core.database import get_db
+from app.models.user import User
 
-router = APIRouter()
+router = APIRouter(prefix="/users")
 
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
-
-@router.post("/register")
-def register(user: UserCreate, db: Session = Depends(get_db)):
-    new_user = create_user(db, user.username, user.password)
-    return {"id": new_user.id, "username": new_user.username}
+@router.get("/")
+async def get_users(db: AsyncSession = Depends(get_db)):
+    result = await db.execute(select(User))
+    users = result.scalars().all()
+    return users
